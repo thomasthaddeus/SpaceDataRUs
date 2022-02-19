@@ -1,0 +1,19 @@
+Specification 	Description
+
+%a  	Abbreviated weekday
+%A  	Full weekday
+%C 	  Century (00-99)
+%D  	Same as %m/%d/%y
+%e  	Day of month [1 - 31]
+%F 	  Same as %Y-%m-%d
+%h  	Same as %b
+%I  	Hours as decimal [01 - 12]
+%j  	Day of year [001 - 366]
+%R  	Same as %H:%M
+%t  	Tab
+%T  	Same as %H:%M:%S
+%u  	Weekday 1 - 7
+%U  	Week of year [00 - 53]
+%V  	Week of year [01 - 53]
+%w  	Weekday 0 - 6
+%W  	Week of year [00 - 53] 
