@@ -1,62 +1,65 @@
 library(tidyverse)
-read.xlsx("2000-2005(Thad)","2000")
+read.csv2("data.csv", headers=TRUE, ColNames=" " )
 
-# Aug 2000 Hurricane Debby
-     ("Hurricane Debby\n
+## Section-1 (Thad)
+##
+#################################################
+##
+## Aug 2000 Hurricane Debby
+debby <- c()
+print("Hurricane Debby\n
       Aug 2000\n
-      Category={}\n
-      Wind Speed={}")
-Debby <- c()
-
+      Category=()\n
+      Wind Speed=(knots$Aug00)"
 
 # Aug 2001 – Tropical Storm Dean 
-
-DEAN <- c()
-
+dean <- (data$)
+print("Hurricane Dean\n
+       Aug 2001\n
+       Category=0 \n
+       Wind Speed=(knots$Aug01)")
 
 # Sept 2004 – Hurricane Jeanne 
+jeanne <- c()
 
-Jeanne <- c()
 
-
-# Oct 2008 – Hurricane Omar 
-
-Omar <- c()
-
+## Section-2 (Shelby)
+##
+###################################
+##
+## Oct 2008 – Hurricane Omar 
+omar <- c()
 
 # Aug 2010 – Hurricane Earl 
-
-Earl <- c()
-
+earl <- c()
 
 # Oct 2010 – Tropical Storm Otto  
-
-Otto <- c()
-
-
-# Oct 2012 – Hurricane Rafael 
-
-Rafael <- c()
+otto <- c()
 
 
-# Aug 2015 – Tropical Storm Erika 
+## Section-3(Griffin)
+##
+#####################################
+##
+## Oct 2012 – **Hurricane_Rafael 
+rafael <- c()
 
-Erika <- c()
-
-
-# Sept 2017 – Hurricane Irma 
-
-Irma <- c()
-
-# Sept 2017 – Hurricane Maria 
-
-Maria <- c()
+# Aug 2015 – **Tropical_Storm_Erika**
+erika <- c()
 
 
-# Aug 2019 – Hurricane Dorian 
+## Section-4(Patricia)
+##
+#################################
+##
+## Sept 2017 – **Hurricane_Irma** 
+irma <- c()
 
-Dorian <- c()
+# Sept 2017 – **Hurricane_Maria** 
+maria <- c()
 
-# Sept 2019 – Tropical Storm Karen 
+# Aug 2019 – **Hurricane_Dorian** 
+dorian <- c()
 
-Karen <- c()
+# Sept 2019 – **Tropical_Storm_Karen** 
+karen <- c()
