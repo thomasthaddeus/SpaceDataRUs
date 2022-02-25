@@ -1,0 +1,269 @@
+---
+title: "HOP07B"
+output: html_document
+---
+
+## Section1: Z-Test
+> Lower Tail Test of Population Mean with Known Variance lwrTailMean.R
+
+```{r}
+mu0 <- 10000    # hypothesized value
+xbar <- 9900    # sample mean
+sigma <- 120    # poulation standard deviation
+n <- 30         # sample size
+
+z <- (xbar-mu0)/(sigma/sqrt(n)) # test statistic
+
+print("z is equal to")
+print(z)
+
+# Calculate the critical value
+alpha <- 0.05
+z.alpha <- qnorm(1-alpha)
+
+print("critical calue is equal to")
+print(-z.alpha)
+
+if(z <= z.alpha){
+  print("Reject the claim that mean lifetime of a light bulb is above 10,000 hours")
+} else {
+  print("Do not reject the claim that mean lifetime of a light bulb is above 10,000 hours")
+}
+```
+
+### Section 1:Uppertail
+
+> Upper Tail Test of Population Mean with Known Variance Upertail.R
+
+```{r}
+muO <- 2        # hypothesized value
+xbar <- 2.1     # sample mean
+sigma <- 0.25   # population standard deviation
+n <- 35         # sample size
+
+z <- (xbar-muO)/(sigma/sqrt(n))
+print("z is equal to ")
+print(z)
+
+#compute the critical value at.05 significance level
+alpha <- 0.5
+z.alpha <- qnorm(1-alpha)
+
+print("z.alpha is equal to")
+print(z.alpha)
+
+if(z>=z.alpha){
+  print("We reject the claim that there is at most 2 grams of saturated fat in a cookie")
+} else {
+  print("Do not reject the claim that there is at most 2 grams of saturated fat in a cookie")
+}
+```
+
+### Section 1: Bothtail
+
+> Two-Tailed Test of Population Mean with Known Variance Bothtail.R
+
+```{r}
+muO <- 15.4     # hypothesized value
+xbar <- 14.6    # sample mean
+sigma <- 2.5    # population standard deviation
+n <- 35         # sample size
+
+z <- (xbar-muO)/(sigma/sqrt(n))
+print("z is equal to ")
+print(z)
+
+#compute the critical value at.05 significance level
+alpha <- 0.5
+z.alpha <- qnorm(1-alpha)
+
+print("z.alpha is equal to")
+print(z.alpha)
+
+if(z>=z.alpha){
+  print("We reject the claim that there is at most 2 grams of saturated fat in a cookie")
+} else {
+  print("Do not reject the claim that there is at most 2 grams of saturated fat in a cookie")
+}
+```
+
+### Section 1: Z-Test
+
+> zVal-ReadFile.R ztest-a.csv
+
+```{r}
+# sample mean: $100,200
+# population sd: $15,000
+# standard error: $2,739
+# sample size: 30
+# z-score: -4.67
+# HO (GlassDoor data): $113,000
+# two-sided test
+
+sal <- read.csv("ztest-a.csv")
+# Get the sample mean from the summary of the file
+print(summary(sal))
+
+#Create a function that calculates z test
+z.test <- function(a, mu, sd){
+  zeta <- (mean(a) - mu)/(sd/sqrt(length(a)))  # n = length(a)
+  return(zeta)
+}
+
+z <- z.test(a = sal$salary, mu = 113000, sd = 15000)
+print("z value is equal to: ")
+print(z)
+
+alpha <- 0.05
+z.half.alpha <- qnorm(1-alpha/2)
+print("-z.half.alpha, z.half.alpha is equal:")
+print(c(-z.half.alpha, z.half.alpha))
+
+if(z <= -z.half.alpha || z >= z.half.alpha){
+  print("reject the null hypothesis")
+} else {
+  print("do not reject the null hypothesis")
+}
+```
+
+## Section 2: t-Test
+
+### Lower Tail Test of Population Mean with Unknown Variance
+
+> tTestLwr.R
+
+```{r}
+muO <- 2          # hypothesized value
+xbar <- 1.8       # sample mean
+n <- 10           # population standard deviation
+s <- 0.15         # sample size
+
+t <- (xbar-muO)/(s/sqrt(n))
+print("The value of t is equal to ")
+print(t)
+
+#compute the critical value at.05 significance level
+alpha <- 0.01
+t.alpha <- qt(1-alpha, df=n-1)
+print("The value of t is")
+print(-t.alpha)
+
+if(t <= -t.alpha){
+  print("reject the null hypothesis that the average life span of a battery is 2 or more years")
+} else {
+  print("Do not reject the nul;l hypothesis that the average life span of a battery is 2 or more years")
+}
+```
+
+### Two-Tailed Test of Population Mean with Unknown Variance
+
+> tTestBoth.R
+
+```{r}
+muO <- 15.4       # hypothesized value
+xbar <- 14.6      # sample mean
+s <- 2.5          # population standard deviation
+n <- 29         # sample size
+
+t <- (xbar-muO)/(s/sqrt(n))   # test statistic
+print("t is equal to ")
+print(t)
+
+#compute the critical value at.05 significance level
+alpha = 0.05
+t.half.alpha <- qt(1-alpha/2, df=n-1)
+print("t.half.alpha value is equal to")
+print(-t.half.alpha, t.half.alpha)
+
+if(t <= -t.half.alpha || t >= t.half.alpha){
+  print("reject the null hypothesis that the mean penguin weight does not differ from last year")
+} else {
+  print("Do not reject the null hypothesis that the mean penguin weight does not differ from last year")
+}
+```
+
+## Section 3: P-value
+
+### PvalueEx1.R
+> Solve the Lower Tail Test of Population Mean with Known Variance
+> using p-value
+
+```{r}
+muO <- 10000 # hypothesized value
+xbar <- 9900 # sample mean
+sigma <- 120 # population standard deviation
+n <- 30      # sample size
+alpha <- .05
+
+z <- (xbar-muO)/(sigma/sqrt(n)) # test statistic
+
+print("z is equal to")
+print(z)
+
+# apply the pnorm function to compute the lower tail p-value of the test statistic
+# As  it turns out to be less
+# than the .05 significance level, we reject the null hypothesis that
+
+pval <- pnorm(z)
+print("pval is equal to")
+print(pval)
+
+if(pval < alpha)
+  print("reject the null hypothesis")
+```
+
+### PvalueEx2.R
+> Solve the Two-Tailed Test of Population Mean with Known Variance
+> using p-value
+
+```{r}
+muO <-   15.4      # hypothesized value
+xbar <-  14.6      # sample mean
+sigma <-  2.5      # population standard deviation
+n <-       35      # sample size
+alpha <- 0.05
+
+z <- (xbar-muO)/(s/sqrt(n))   # test statistic
+print("z is equal to ")
+print(z)
+
+#apply the pnorm function to compute the two-tailed p-value of the test statistic.
+#IT doubles the lower tailed p-value as the sample mean is less than the hypothesized value.
+pval = 2 * pnorm(z) #lower tail
+print("The value of pval is:")
+print(pval)         # two-tailed p-value
+
+if(pval < alpha){
+  print("Reject the null hypothesis")
+} else {
+  print("Accept the null hypothesis")
+}
+```
+
+### PvalueEx3.R
+> Solve Lower Tail Test of Population Mean with Unknown Variance
+> using p-value
+
+```{r PValueEx3, message=TRUE, paged.print=TRUE}
+muO <- 2     # hypothesized value
+xbar <- 1.8  # sample mean
+n <- 10      # population standard deviation
+s <- 35      # sample size
+alpha <- 0.01 
+
+t <- (xbar-muO)/(s/sqrt(n))   
+print("The value of t is equal to ")
+print(t)
+
+#apply the pt function to compute the lower tail p-value of the test statistic.
+pval = pt(t, df=n-1)
+print("Pval is equal to:")
+print(pval)         # lower tail p-value
+
+if(pval < alpha){
+  print("Reject the null hypothesis")
+} else {
+  print("Accept the null hypothesis")
+}
+```
+

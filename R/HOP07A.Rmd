@@ -1,0 +1,87 @@
+---
+title: "R Notebook"
+output: html_document
+---
+
+# HOP07A
+```{r}
+getwd()
+```
+
+## Part 1
+> csvFile.R
+
+```{r} 
+# print your csv file
+data <- read.csv(file="iris2.csv", header=TRUE, sep=",")
+View(data)
+
+### use if View doesn't work
+# print(data)
+```
+
+## Part 2
+> selectData.R
+
+```{r}
+data <- read.csv(file="iris2.csv", header=TRUE, sep=",")
+
+
+res <- subset(data, variety=="Setosa")
+
+# print(res)
+
+# write filtered data into a new CSV file.
+write.csv(res,"result.csv")
+```
+
+## Part 3
+> sortData.R
+
+```{r}
+# sort the data ascending in petal.width column
+data <- read.csv(file="iris2.csv", header=TRUE, sep=",")
+
+print(data[ order(data$petal.width), ])
+
+#Sort the data descending in petal.width column
+#data <- read.csv(file="iris2.csv", header=TRUE, sep=",")
+
+
+#print(data[order(data$petal.width, decreasing=TRUE), ])
+```
+
+## Part 4
+> dataFilter.R
+
+```{r}
+data <- read.csv(file="iris2.csv", header=TRUE, sep=",")
+
+# print(data[data$sepal.length > 7, ])
+
+print(data[data$sepal.length > 4.5 & data$sepal.length < 5, ])
+```
+
+## Part 5
+> removeDup.R
+
+```{r}
+# Remove the duplicate from the dataset
+
+data <- read.csv(file="iris2.csv", header=TRUE, sep=",")
+
+
+print(data[!duplicated(data$variety), ])
+```
+
+## Part 6
+> removeNA.R
+
+```{r}
+data <- read.csv(file="iris2.csv", header=TRUE, sep=",")
+
+
+
+print(na.omit(data))
+```
+

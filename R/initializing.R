@@ -5,7 +5,7 @@ library(janitor)
 library(dplyr)
 
 #change Working directory if you run this
-setwd("D:/Repositories/CS251/Space_Data_R_US/Data_Raw/")
+setwd("D:/Repositories/CS251/SDRUS/scaling-guacamole/Data_Clean/")
 data <- read.csv2("data.csv",
                     header = FALSE,
                     sep = ",",
@@ -49,4 +49,4 @@ write.csv(dir, 'dir.csv')
 write.csv(gust, 'gust.csv')
 write.csv(temp, 'temp.csv')
 write.csv(pressure, 'pressure.csv')
-write.table(data2, "data2.csv")
+write.csv(data, 'data-correct.csv')
