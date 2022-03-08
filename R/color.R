@@ -14,6 +14,7 @@ p2 <- plot(data_correct$knots,
 p3 <- plot(temp ~ pressure,
            data = data_correct) + 
            scale_color_manual(values=c("red", "blue", "green"))
+# Plot 4
 p4 <- ggplot(data_correct, aes(date, pressure)) +
             geom_density(aes(date, pressure), color = 'blue')
 

@@ -1,19 +1,22 @@
 library(tidyverse)
-read.csv2("data.csv", headers=TRUE, ColNames=" " )
+library(tidyr)
+library(dbplyr)
+library(dplyr)
+hurrican_data <- read.csv2("data.csv", headers=TRUE, ColNames=" " )
 
 ## Section-1 (Thad)
 ##
 #################################################
 ##
 ## Aug 2000 Hurricane Debby
-debby <- c()
+debby <- filter()
 print("Hurricane Debby\n
       Aug 2000\n
       Category=()\n
-      Wind Speed=(knots$Aug00)"
+      Wind Speed=(knots$Aug00")
 
 # Aug 2001 – Tropical Storm Dean 
-dean <- (data$)
+dean <- ()
 print("Hurricane Dean\n
        Aug 2001\n
        Category=0 \n
@@ -63,3 +66,14 @@ dorian <- c()
 
 # Sept 2019 – **Tropical_Storm_Karen** 
 karen <- c()
+
+
+
+
+morning  <- filter(data, time==
+                  .data='0:00'|'1:00'|'2:00')
+                               
+'3:00'&'4:00'&'5:00'&
+'6:00'&'7:00'&'8:00'&
+'9:00'&'10:00'&'11:00')
+
