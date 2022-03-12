@@ -2,14 +2,15 @@ library(tidyverse)
 library(tidyr)
 library(dbplyr)
 library(dplyr)
-hurrican_data <- read.csv2("data.csv", headers=TRUE, ColNames=" " )
+hurrican_data <- read.csv("data.csv", headers=TRUE)
 
 ## Section-1 (Thad)
 ##
 #################################################
 ##
 ## Aug 2000 Hurricane Debby
-debby <- filter()
+debby <- filter(data$date)
+
 print("Hurricane Debby\n
       Aug 2000\n
       Category=()\n

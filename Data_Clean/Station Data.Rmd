@@ -1,0 +1,25 @@
+USAF	  WBAN	STATION   NAME	                       CTRY	 STATE	ICAO	 LAT	    LON	    ELEV(M)	 BEGIN	END
+785140	11603	RAFAEL    HERNANDEZ AIRPORT	             US 	PR  	TJBQ	18.495	-67.129	  72.2	20060101	20220227
+785145	11653	EUGENIO   MARIA DE HOSTOS AIRPORT	       US 	PR	  TJMZ	18.254	-67.149	  11.6	20050101	20170810
+785260	11641	LUIS      MUNOZ MARIN INTERNATIONAL AP	 US 	PR	  TJSJ	18.433	-66.011	  3	    20050101	20220228
+785265	494	  FERNANDO  LUIS RIBAS DOMINICCI AIRPORT	 US 	PR  	TJIG	18.457	-66.098	  3.1	  20110223	20220226
+785350	11630	NAVAL     STATION ROOSEVELT ROADS CEIBA	 US	  PR	  TJNR	18.255	-65.641	  10.1	19730101	20220227
+isd(
+  usaf,
+  wban,
+  year,
+  overwrite = TRUE,
+  cleanup = TRUE,
+  additional = TRUE,
+  parallel = FALSE,
+  cores = getOption("cl.cores", 2),
+  progress = FALSE,
+  force = FALSE,
+  ...
+)
+
+
+res1 <- isd(usaf='785140', wban='11603', year=1993)
+res2 <- isd(usaf='785145', wban='11653', year=2011)
+res3 <- isd(usaf='785260', wban='11641', year=2016)
+res4 <- isd(usaf='785350', wban='494',   year=1970)
