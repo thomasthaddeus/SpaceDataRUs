@@ -1,5 +1,5 @@
 ---
-title: "HOP07B"
+title: "Hypothesis Testing"
 output: html_document
 ---
 
@@ -9,7 +9,7 @@ output: html_document
 ```{r}
 mu0 <- 10000    # hypothesized value
 xbar <- 9900    # sample mean
-sigma <- 120    # poulation standard deviation
+sigma <- 120    # population standard deviation
 n <- 30         # sample size
 
 z <- (xbar-mu0)/(sigma/sqrt(n)) # test statistic
@@ -21,7 +21,7 @@ print(z)
 alpha <- 0.05
 z.alpha <- qnorm(1-alpha)
 
-print("critical calue is equal to")
+print("critical value is equal to")
 print(-z.alpha)
 
 if(z <= z.alpha){

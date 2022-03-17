@@ -4,7 +4,7 @@ library(mice)
 # 36526 = Jan 1, 2000
 
 #change Working directory if you run this
-setwd("D:/Repositories/CS251/SDRUS/scaling-guacamole/Data_Clean/")
+# setwd("D:/Repositories/CS251/SDRUS/scaling-guacamole/Data/")
 df0 <- read.csv2("data.csv",
                   header = TRUE,
                   sep = ",",
@@ -16,7 +16,8 @@ df.null <- df.null %>%fill(gustKnots, .direction = 'updown')
 df.null <- df.null %>% fill(pressure, .direction = 'updown')
 df.null <- df.null %>%fill(temp, .direction = 'updown')
 
-
+# # clean Data Set for observed values
+df1 <- na.omit(df0)
 
 
 # imp <- mice(df0, method = "norm.predict", m = 1) # Impute data
@@ -30,8 +31,7 @@ df.null <- df.null %>%fill(temp, .direction = 'updown')
 # # as.Date(data$time, "%R")
 # # as.Date(data$date, "%m/%d/%Y")
 # 
-# # clean Data Set
-# data <- na.omit(df0)
+
 # 
 # 
 # # Graphical comparison of deterministic and stochastic regression imputation

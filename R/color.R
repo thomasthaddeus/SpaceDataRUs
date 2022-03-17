@@ -7,14 +7,12 @@ p1 <- ggplot(rnorm(100), density =.1)
 print(pl + geom_histogram(binwidth = 0.1, aes(y = ..density..))
       + geom_density(colors = "red"))
 # Plot 2
-p2 <- plot(data_correct$knots,
-     data_correct$temp) + 
+p2 <- plot(data$knots, data$temp) + 
      scale_color_manual(values=c("red", "blue", "green"))
 # Plot 3
-p3 <- plot(temp ~ pressure,
-           data = data_correct) + 
+p3 <- plot(temp ~ pressure, data) + 
            scale_color_manual(values=c("red", "blue", "green"))
 # Plot 4
-p4 <- ggplot(data_correct, aes(date, pressure)) +
+p4 <- ggplot(data, aes(date, pressure)) +
             geom_density(aes(date, pressure), color = 'blue')
 
