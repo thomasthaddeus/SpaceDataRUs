@@ -1,0 +1,43 @@
+USAF=997349
+WBAN=99999
+STATION NAME=LIME TREE BAY
+STATE
+CTRY=VQ
+STATE=NA
+ICAO= NA
+LAT=17.700
+LON=-64.750
+ELEV=10.0
+BEGIN=20080101
+END=20220226
+6.516318
+
+
+
+## Not run: 
+# Get a table of all datasets
+ncdc_datasets()
+
+# Get details from a particular dataset
+ncdc_datasets(datasetid='ANNUAL')
+
+# Get datasets with Temperature at the time of observation (TOBS) data type
+ncdc_datasets(datatypeid='TOBS')
+## two datatypeid's
+ncdc_datasets(datatypeid=c('TOBS', "ACMH"))
+
+# Get datasets with data for a series of the same parameter arg, in this case
+# stationid's
+ncdc_datasets(stationid='COOP:310090')
+ncdc_datasets(stationid=c('COOP:310090','COOP:310184','COOP:310212'))
+
+# Multiple datatypeid's
+ncdc_datasets(datatypeid=c('ACMC','ACMH','ACSC'))
+ncdc_datasets(datasetid='ANNUAL', datatypeid=c('ACMC','ACMH','ACSC'))
+ncdc_datasets(datasetid='GSOY', datatypeid=c('ACMC','ACMH','ACSC'))
+
+# Multiple locationid's
+ncdc_datasets(locationid="FIPS:30091")
+ncdc_datasets(locationid=c("FIPS:30103", "FIPS:30091"))
+
+## End(Not run)

@@ -1,0 +1,68 @@
+---
+title: "Hurricane Data"
+author: "Thaddeus Thomas"
+date: "3/17/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(MPN)
+library(tidyr)
+library(dplyr)
+library(tidyverse)
+```
+
+## Loading DataSets
+The number 36526 = Jan 1, 2000 because the date started at 0 in 1970
+
+```{r dataframe}
+df <- read.csv2("data.csv",
+                  header = TRUE,
+                  sep = ",",
+                  na.strings = "")
+df1 <- na.omit(df0) #Creates table of observed data
+```
+
+### Null dataset
+- Creates a table of null data values for averaging
+
+```{r Null Data}
+df.null <- df0 %>% fill(knots, .direction = 'updown')
+df.null <- df.null %>% fill(windDir, .direction = 'updown')
+df.null <- df.null %>%fill(gustKnots, .direction = 'updown')
+df.null <- df.null %>% fill(pressure, .direction = 'updown')
+df.null <- df.null %>%fill(temp, .direction = 'updown')
+
+```
+
+subset the data frame for the time period of 2000-2005
+
+```{r 2000-2005}
+dateInput()
+# df.06 <- filter(df1, time==('0,1,2,3,4,5,6'))
+
+
+```
+
+## Getmode function for finding the mode of a dataset 
+
+```{r Mode}
+getmode <- function(v) {
+  uniqv <- unique(v)
+  uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+kt.mode<-getmode(df2$knots)
+kt.mode<-getmode(df2$)
+kt.mode<-getmode(df2$knots)
+kt.mode<-getmode(df2$knots)
+kt.mode<-getmode(df2$knots)
+```
+
+## Averages 
+```{r Averages}
+summary()
+mean()
+median()
+
+```

@@ -1,0 +1,177 @@
+---
+title: "Hurricane_2011-2016"
+author: "Griffin Dean"
+date: "3/18/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+#important question: This study will focus on the following research question: 
+#how has the U.S. Virgin Islands’ inter-seasonal weather patterns from 2000-2022
+indicate a deviation from traditional hurricane season?
+
+## Questions asked
+-when did the hurricanes occur, 
+-compare with hurricane season in the virgin islands, 
+-if it is outside the hurricane season, how much does it devaite
+
+#large timespan with no hurricanes, then many different hurricanes in a short period of time
+
+#ocean data pull tools
+ #if hurricanes come in at sunrise or sunspot.year
+
+#peak windspeed in comparison to mean windspeed in a yea
+
+#plot wind speeds in a year vs wind speed vs a hurricane
+```{r}
+library(tidyverse)
+erika <- read.csv(file="erika.csv", header=TRUE, sep=",")
+rafael <- read.csv(file="rafael.csv", header=TRUE, sep=",")
+fullData <- read.csv(file="GriffDeanData.csv", header=TRUE, sep=",")
+```
+
+## Hurricane Erika data(august 2015)
+```{r Hurricane Erika}
+erika.knots <- erika$knots
+erika.knots.mean <- mean(erika.knots, na.rm=FALSE)
+erika.knots.SD <- sd(erika.knots)
+print("Mean windspeed erika: ", erika.knots.mean )
+print(erika.knots.mean)
+
+erika.windDir <- erika$windDir
+erika.windDir.mean <- mean(erika.windDir, na.rm=FALSE)
+erika.windDir.SD <- sd(erika.windDir)
+print("Mean wind direction erika:" )
+print(erika.windDir.mean)
+
+erika.gustKnots <- erika$gustKnots
+erika.gustKnots.mean <- mean(erika.gustKnots, na.rm=FALSE)
+erika.gustKnots.SD <- sd(erika.gustKnots)
+print("Mean gustKnots erika:" )
+print(erika.gustKnots.mean)
+
+erika.airTemp <- erika$airTemp
+erika.airTemp.mean <- mean(erika.airTemp, na.rm=FALSE)
+erika.airTemp.SD <- sd(erika.airTemp)
+print("Mean airtemp erika:" )
+print(erika.airTemp.mean)
+
+erika.pressure <- erika$pressure
+erika.pressure.mean <- mean(erika.pressure, na.rm=FALSE)
+erika.pressure.SD <- sd(erika.pressure)
+print("Mean pressure erika:" )
+print(erika.pressure.mean)
+
+erika.waterTemp <- erika$waterTemp
+erika.waterTemp.mean <- mean(erika.waterTemp, na.rm=FALSE)
+erika.waterTemp.SD <- sd(erika.waterTemp)
+print("Mean waterTemp erika:" )
+print(erika.waterTemp.mean)
+```
+
+## Hurricane Rafael(oct 2012)
+-Data Processing
+```{r Hurricane Rafael}
+rafael.knots <- rafael$knots
+rafael.knots.mean <- mean(rafael.knots, na.rm=FALSE)
+rafael.knots.SD <- sd(rafael.knots)
+print("Mean windspeed rafael:" )
+print(rafael.knots.mean)
+
+rafael.windDir <- rafael$windDir
+rafael.windDir.mean <- mean(rafael.windDir, na.rm=FALSE)
+rafael.windDir.SD <- sd(rafael.windDir)
+print("Mean wind direction rafael:" )
+print(rafael.windDir.mean)
+
+rafael.gustKnots <- rafael$gustKnots
+rafael.gustKnots.mean <- mean(rafael.gustKnots, na.rm=FALSE)
+rafael.gustKnots.SD <- sd(rafael.gustKnots)
+print("Mean gust rafael:" )
+print(rafael.gustKnots.mean)
+
+rafael.airTemp <- rafael$airTemp
+rafael.airTemp.mean <- mean(rafael.airTemp, na.rm=FALSE)
+rafael.airTemp.SD <- sd(rafael.airTemp)
+print("Mean airtemp rafael:" )
+print(rafael.airTemp.mean)
+
+rafael.pressure <- rafael$pressure
+rafael.pressure.mean <- mean(rafael.pressure, na.rm=FALSE)
+rafael.pressure.SD <- sd(rafael.pressure)
+print("Mean pressure rafael:" )
+print(rafael.pressure.mean)
+
+rafael.waterTemp <- rafael$waterTemp
+rafael.waterTemp.mean <- mean(rafael.waterTemp, na.rm=FALSE)
+rafael.waterTemp.SD <- sd(rafael.waterTemp)
+print("Mean waterTemp rafael:" )
+print(rafael.waterTemp.mean)
+```
+
+## Full data set
+-2011
+-2016
+```{r All Data}
+fullData.knots <- fullData$knots
+fullData.knots.mean <- mean(fullData.knots, na.rm=FALSE)
+fullData.knots.SD <- sd(fullData.knots)
+print("Mean windspeed fulldata:" )
+print(fullData.knots.mean)
+
+fullData.windDir <- fullData$windDir
+fullData.windDir.mean <- mean(fullData.windDir, na.rm=FALSE)
+fullData.windDir.SD <- sd(fullData.windDir)
+print("Mean windDir fulldata:" )
+print(fullData.windDir.mean)
+
+fullData.gustKnots <- fullData$gustKnots
+fullData.gustKnots.mean <- mean(fullData.gustKnots, na.rm=FALSE)
+fullData.gustKnots.SD <- sd(fullData.gustKnots)
+print("Mean gust Fulldata:" )
+print(fullData.gustKnots.mean)
+
+fullData.airTemp <- fullData$airTemp
+fullData.airTemp.mean <- mean(fullData.airTemp, na.rm=FALSE)
+fullData.airTemp.SD <- sd(fullData.airTemp)
+print("Mean temp fullData:" )
+print(fullData.airTemp.mean)
+
+fullData.pressure <- fullData$pressure
+fullData.pressure.mean <- mean(fullData.pressure, na.rm=FALSE)
+fullData.pressure.SD <- sd(fullData.pressure)
+print("Mean pressure fulldata:" )
+print(fullData.pressure.mean)
+
+fullData.waterTemp <- fullData$waterTemp
+fullData.waterTemp.mean <- mean(fullData.waterTemp, na.rm=FALSE)
+fullData.waterTemp.SD <- sd(fullData.waterTemp)
+print("Mean waterTemp fulldata:" )
+print(fullData.waterTemp.mean)
+```
+
+#Summary
+```{r}
+summary(erika)
+summary(rafael)
+summary(fullData)
+```
+```{r}
+=library(ggplot2)
+ggplot.Erica <- ggplot(erika, aes(pressure, airTemp))
+ggplot.Rafael <- ggplot(rafael, aes(pressure, airTemp))
+ggplot.All_Time <- ggplot(fullData, aes(pressure, airTemp))
+```
+
+```{r}
+a <- ggplot.Erica
+a + geom_label(aes(label = Erica), nudge_x = 1,nudge_y = 1) - x, y, 
+label, alpha,angle, color,family, fontface, hjust, lineheight, size, vjust
+
+a + geom_boxplot()
+
+```
+x, y, lower, middle, upper, ymax, ymin, alpha,
+color, fill, group, linetype, shape, size, weight

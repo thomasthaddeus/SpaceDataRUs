@@ -1,0 +1,206 @@
+---
+title: "Hurricane"
+author: "Thaddeus Thomas"
+date: "3/18/2022"
+output: 
+  html_document:
+    toc: 
+    citation_package
+---
+Initialize the File
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(lubridate)
+library(ggplot2)
+library(vistime)
+setwd('D:/Repositories/CS251/SDRUS/scaling-guacamole/Data_Clean')
+data<- read.csv('data_clean.csv', header = TRUE)
+data <- na.omit(data)
+```
+
+### Named Hurricanes
+Debby   2000-08-19	2000-08-24
+Dean    2001-08-22	2001-08-23
+Jeanne  2004-09-14	2004-09-17
+Omar    2008-10-14	2008-10-16
+Earl    2010-08-30	2010-09-03
+Otto    2010-10-04	2010-10-06
+Rafael  2012-10-12	2012-10-15
+Erika   2015-08-27	2015-08-29
+Irma    2017-09-05	2017-09-07
+Maria   2017-09-18	2017-09-20
+Dorian  2019-08-26	2019-09-06
+Karen   2019-09-23	2019-09-24
+
+## Gets The Mode
+```{r}
+getmode <- function(v) {
+   uniqv <- unique(v)
+   uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+```
+
+## Timeline Data
+```{r}
+
+timeline_data <- data.frame(event=c("Debby","Dean","Jeanne","Omar","Earl","Otto","Rafael","Erika","Irma","Maria","Dorian","Karen"),start=c("2000-08-19","2001-08-22","2004-09-14","2008-10-14","2010-08-30","2010-10-04","2012-10-12","2015-08-27","2017-09-05",	"2017-09-18","2019-08-26","2019-09-23"),end=c("2000-08-24","2001-08-23","2004-09-17","2008-10-16","2010-09-03","2010-10-06","2012-10-15","2015-08-29","2017-09-07","2017-09-20","2019-09-06","2019-09-24"))
+
+gg_vistime(timeline_data,col.group = 'start', optimize_y = TRUE, linewidth = 5,title = 'Hurricanes',col.fontcolor='black',col.color = "#DD4B39")
+ggsave("hurricame_timeline.png")
+gg_vistime(Phase, optimize_y = TRUE, linewidth = 25)
+```
+## Averages for the Dataset
+- Mean, Median, Mode
+- Var, SD, Summary
+- 
+
+```{r}
+library(dplyr)
+
+df %>% 
+  summarise(
+    with(df,
+         temp.w.mean = mean(temp.w),
+         temp.summ = summary(temp),
+         data.mode = getmode(temp.w),
+         summary.data <- summary(temp.w),
+         data.var = var(temp.w),
+         data.sd = sd(temp.w)
+))
+```
+
+```{r echo=FALSE}
+plot(df)
+ggsave('df_water.png')
+```
+
+
+```{r plots}
+a <- ggplot(df, aes(pressure, airTemp, colour = class)) + geom_point()
+ <- geom_point() +
+ <- ggplot(df, aes(pressure, airTemp, colour = class)) + geom_point()
+
+
+<-ggplot + geom_plot()
+
+<-ggplot + geom_boxplot(mapping= ,data= )
+hist()
+#a + geom_label(aes(label = Erica), nudge_x = 1,nudge_y = 1) - x, y, 
+#label, alpha,angle, color,family, fontface, hjust, lineheight, size, vjust
+
+```
+
+
+```{r knots}
+knots <- filter(data)$knots
+knots.sd <- sd(knots) 
+knots.var <- var(knots) 
+knots.range <-range(knots)
+knots.quant <- quantile(knots, probs=0.5)
+knots.summ<- summary(knots)
+
+knots.summ
+knots.range
+knots.var
+knots.sd
+knots.quant
+```
+
+
+```{r}
+hour<- df$hour
+y <- knots + rnorm()
+qqplot(knots, y)
+```
+
+```{r}
+data_clean$new <- colMeans(data_clean[ ,c(8,11)], na.rm = TRUE)
+
+```
+
+```{r}
+regex()
+```
+
+
+```{r knots.gust}
+gknots <- filter(data)$knots.gust
+gknots.sd <- sd(gknots) 
+gknots.var <- var(gknots) 
+gknots.range <-range(gknots)
+gknots.quant <- quantile(gknots, probs=0.5)
+gknots.summ<- summary(gknots)
+
+gknots.summ
+gknots.range
+gknots.var
+gknots.sd
+gknots.quant
+```
+## Baselines for Temperature Vector
+```{r temp}
+temp <- filter(data)$temp
+temp.sd <- sd(temp) 
+temp.var <- var(temp) 
+temp.range <-range(temp)
+temp.quant <- quantile(temp, probs=0.5)
+temp.summ<- summary(temp)
+
+temp.summ
+temp.range
+temp.var
+temp.sd
+temp.quant
+```
+
+## Baselines for water temperature
+```{r}
+temp.w <- filter(data)$temp.w
+temp.w.sd <- sd(temp.w) 
+temp.w.var <- var(temp.w) 
+temp.w.range <-range(temp.w)
+temp.w.quant <- quantile(temp.w, probs=0.5)
+temp.w.summ <- summary(temp.w)
+
+temp.w.summ
+temp.w.range
+temp.w.var
+temp.w.sd
+temp.w.quant
+```
+
+## Barometric Pressure
+```{r Barometric Pressure}
+baro <- filter(data)$baro
+baro.sd <- sd(baro) 
+baro.var <- var(baro) 
+baro.range <-range(baro)
+baro.quant <- quantile(baro, probs=0.5)
+baro.summ<- summary(baro)
+
+baro.summ
+baro.range
+baro.var
+baro.sd
+baro.quant
+```
+
+
+## Averages & Baselines for direction of the wind
+```{r Wind Direction}
+wind.dir <- filter(data)$wind.dir
+wind.dir.sd <- sd(wind.dir) 
+wind.dir.var <- var(wind.dir) 
+wind.dir.range <-range(wind.dir)
+wind.dir.quant <- quantile(wind.dir, probs=0.5)
+wind.dir.summ<- summary(wind.dir)
+
+wind.dir.summ
+wind.dir.range
+wind.dir.var
+wind.dir.sd
+wind.dir.quant
+```
+
+

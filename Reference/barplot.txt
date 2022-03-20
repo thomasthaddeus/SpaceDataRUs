@@ -1,0 +1,19 @@
+barplot(x,y,type,main,xlab,ylab,pch,col,las,bty,bg,cex,…)
+
+
+height    	A vector or matrix of values describing the bars which make up the plot
+width	      A vector specifying bar widths
+space	      The amount of space left before each bar
+names.arg	  The names to be plotted below each bar
+legend.text	The text used to construct a legend for the plot
+beside	    If TRUE the columns are portrayed as juxtaposed bars
+horiz	      If TRUE, the bars are drawn horizontally
+density	    The density of shading lines
+angle	      The slope of shading lines
+col	        A vector of colors for the bars
+border	    The color to be used for the border of the bars
+main	      An overall title for the plot
+xlab      	The label for the x axis
+ylab	      The label for the y axis
+…	          Other graphical parameters
+
