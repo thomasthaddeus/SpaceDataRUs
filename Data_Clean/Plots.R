@@ -1,0 +1,76 @@
+
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+library(tidyverse)
+library(ggplot2)
+setwd('D:/Repositories/CS251/SDRUS/scaling-guacamole/Data_Clean')
+data<- read.csv('data_clean.csv', header = TRUE)
+data <- na.omit(data)
+
+par(mfrow = c(2,2))
+
+ggplot(data=data, mapping = aes(x = knots, y = baro)) + 
+  geom_point() + 
+  geom_smooth()
+
+ggplot(data=data, mapping = aes(x = knots, y = baro)) + 
+  geom_point(mapping = aes(color = month)) + 
+  geom_smooth()
+
+ggplot(data, mapping = aes(x = knots, y = temp)) + 
+  geom_point(mapping = aes(color = month)) + 
+  geom_smooth(data = filter(data, month == '7,8,9,10'), se = FALSE)
+
+ggplot(data, mapping = aes(x = baro, y = temp, color = knots)) + 
+  geom_point() + 
+  geom_smooth(se = FALSE)
+
+ggplot(data=data) + 
+  geom_bar(mapping = aes(x = baro, colour = temp))
+
+ggplot(data=data) + 
+  geom_bar(mapping = aes(x = baro, fill = knots.gust))
+
+ggplot(data=data) + 
+  geom_bar(mapping = aes(x = baro, fill = knots))
+
+ggplot(data=data, mapping = aes(x = baro, fill = temp.w)) + 
+  geom_bar(alpha = 1/5, position = "identity")
+
+ggplot(data=data, mapping = aes(x = baro, colour = month)) + 
+  geom_bar(fill = NA, position = "identity")
+
+ggplot(data=data) + 
+  geom_bar(mapping = aes(x = baro, fill = hour), position = "fill")
+
+ggplot(data=data) + 
+  geom_bar(mapping = aes(x = baro, fill = month), position = "dodge")
+
+ggplot(data=data) + 
+  geom_point(mapping = aes(x = knots, y = baro), position = "jitter")
+
+ggplot(data=data, mapping = aes(x = temp, y = baro)) + 
+  geom_point()
+
+ggplot(data=data, mapping = aes(x = temp.w, y = baro)) + 
+  geom_boxplot()
+ggplot(data=data, mapping = aes(x = temp.w, y = baro)) + 
+  geom_boxplot() +
+  coord_flip()
+
+bar <- ggplot(data=data) + 
+  geom_bar(
+    mapping = aes(x = temp.w, fill = temp), 
+    show.legend = FALSE,
+    width = 1
+  ) + 
+  theme(aspect.ratio = 1) +
+  labs(x = NULL, y = NULL)
+
+bar + coord_flip()
+bar + coord_polar()
+

@@ -159,7 +159,7 @@ summary(rafael)
 summary(fullData)
 ```
 ```{r}
-=library(ggplot2)
+library(ggplot2)
 ggplot.Erica <- ggplot(erika, aes(pressure, airTemp))
 ggplot.Rafael <- ggplot(rafael, aes(pressure, airTemp))
 ggplot.All_Time <- ggplot(fullData, aes(pressure, airTemp))
@@ -167,11 +167,8 @@ ggplot.All_Time <- ggplot(fullData, aes(pressure, airTemp))
 
 ```{r}
 a <- ggplot.Erica
-a + geom_label(aes(label = Erica), nudge_x = 1,nudge_y = 1) - x, y, 
-label, alpha,angle, color,family, fontface, hjust, lineheight, size, vjust
+a + geom_label(aes(label = Erica), nudge_x = 1,nudge_y = 1) 
 
 a + geom_boxplot()
 
 ```
-x, y, lower, middle, upper, ymax, ymin, alpha,
-color, fill, group, linetype, shape, size, weight

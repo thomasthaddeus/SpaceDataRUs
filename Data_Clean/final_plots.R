@@ -31,3 +31,9 @@ df %>%
          summary.data <- summary(temp.w),
          data.var = var(temp.w),
          data.sd = sd(temp.w)))
+
+### FUNCTION For calculating the mode
+function(v) {
+  uniqv <- unique(v)
+  uniqv[which.max(tabulate(match(v, uniqv)))]
+}

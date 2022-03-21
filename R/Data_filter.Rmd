@@ -16,7 +16,7 @@ library(tidyverse)
 ## Loading DataSets
 The number 36526 = Jan 1, 2000 because the date started at 0 in 1970
 
-```{r dataframe}
+```{r dataframe, eval=FALSE, warning=TRUE, include=FALSE}
 df <- read.csv2("data.csv",
                   header = TRUE,
                   sep = ",",

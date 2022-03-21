@@ -43,7 +43,6 @@ getmode <- function(v) {
 
 ## Timeline Data
 ```{r}
-
 timeline_data <- data.frame(event=c("Debby","Dean","Jeanne","Omar","Earl","Otto","Rafael","Erika","Irma","Maria","Dorian","Karen"),start=c("2000-08-19","2001-08-22","2004-09-14","2008-10-14","2010-08-30","2010-10-04","2012-10-12","2015-08-27","2017-09-05",	"2017-09-18","2019-08-26","2019-09-23"),end=c("2000-08-24","2001-08-23","2004-09-17","2008-10-16","2010-09-03","2010-10-06","2012-10-15","2015-08-29","2017-09-07","2017-09-20","2019-09-06","2019-09-24"))
 
 gg_vistime(timeline_data,col.group = 'start', optimize_y = TRUE, linewidth = 5,title = 'Hurricanes',col.fontcolor='black',col.color = "#DD4B39")
@@ -70,6 +69,7 @@ df %>%
 ))
 ```
 
+
 ```{r echo=FALSE}
 plot(df)
 ggsave('df_water.png')
@@ -78,20 +78,37 @@ ggsave('df_water.png')
 
 ```{r plots}
 a <- ggplot(df, aes(pressure, airTemp, colour = class)) + geom_point()
- <- geom_point() +
- <- ggplot(df, aes(pressure, airTemp, colour = class)) + geom_point()
+
+b <- ggplot(df, aes(pressure, airTemp, colour = class)) + geom_point()
 
 
-<-ggplot + geom_plot()
+c<-ggplot + geom_plot(temp.w)
 
-<-ggplot + geom_boxplot(mapping= ,data= )
-hist()
-#a + geom_label(aes(label = Erica), nudge_x = 1,nudge_y = 1) - x, y, 
-#label, alpha,angle, color,family, fontface, hjust, lineheight, size, vjust
+d<-ggplot + geom_boxplot(mapping=knots,data=data$month)
+hist(df)
+
 
 ```
 
 
+```{r}
+hour<- df$hour
+y <- knots + rnorm()
+qqplot(knots, y)
+```
+
+
+```{r}
+data_clean$new <- colMeans(data_clean[ ,c(8,11)], na.rm = TRUE)
+
+```
+
+
+```{r}
+regex()
+```
+
+## Knots
 ```{r knots}
 knots <- filter(data)$knots
 knots.sd <- sd(knots) 
@@ -107,23 +124,7 @@ knots.sd
 knots.quant
 ```
 
-
-```{r}
-hour<- df$hour
-y <- knots + rnorm()
-qqplot(knots, y)
-```
-
-```{r}
-data_clean$new <- colMeans(data_clean[ ,c(8,11)], na.rm = TRUE)
-
-```
-
-```{r}
-regex()
-```
-
-
+## Gust Knots
 ```{r knots.gust}
 gknots <- filter(data)$knots.gust
 gknots.sd <- sd(gknots) 
@@ -138,6 +139,7 @@ gknots.var
 gknots.sd
 gknots.quant
 ```
+
 ## Baselines for Temperature Vector
 ```{r temp}
 temp <- filter(data)$temp
